@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Get Help</title>
+  <title height: 10vh>Get Help</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
   <script src="script.js"></script>
 </head>
 <body>
   <header>
-    <h1>Get Help</h1>
+    <h1 class="parent-container">Get Help</h1>
   </header>
   <main>
     <div id="chat-container">
-      <div id="chat-log">
+    <div id="parent-container" class="parent-container">
+      <div id="chat-log" class="container">
         <!-- Chat log goes here -->
-      </div>
-      <div id="user-input">
-        <input type="text" id="input-field" placeholder="Type your message">
-        <button onclick="sendMessage()">Send</button>
+        
       </div>
     </div>
+      <div id="user-input" height="10vh" class="parent-container">
+        <div class="input-group input-group-lg">
+          <input type="text" class="form-control" placeholder="Ask your doubt" aria-label="Recipient's username" aria-describedby="button-addon2">
+          <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+        </div>
+      </div>
+      
+    </div>
+
   </main>
 </body>
 </html>

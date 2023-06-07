@@ -1,0 +1,22 @@
+
+.central_heading{
+    text-align: center;
+}
+.chat-container{
+    width: 100vm;
+    height: 90vh;
+}
+.parent-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+.container {
+    position: relative;
+    right: 0;
+    width: 100%;
+    max-width: 70vw; /* Set the desired maximum width */
+    height: 80vh; /* Set the desired height */
+    overflow: auto; /* Enable scrolling for overflowed content */
+  }
+
