@@ -70,3 +70,15 @@ width:70vw;
     padding: 20px;
     text-align: center;
   }
+  .central_heading{
+    text-align: center;
+    padding: 10px;
+  }
+  .center-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .tabcontainer{
+display: flex;
+  }
