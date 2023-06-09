@@ -1,0 +1,72 @@
+.parent-container{
+
+}
+.container{
+height:80vh;
+width:70vw;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-gap: 10px;
+  }
+  
+  .grid-item {
+    background-color: #ccc;
+    padding: 10px;
+  }
+  .input-container {
+    position: relative;
+    display: flex;
+    height: 8vh;
+    width: 80vw;
+  }
+  
+  .custom-input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .custom-input:focus {
+    outline: none;
+    border-color: #6c63ff;
+    box-shadow: 0 0 5px #6c63ff;
+  }
+  
+  .custom-input::placeholder {
+    color: #999;
+  }
+  
+  .custom-input:hover::placeholder {
+    color: #666;
+  }
+  .send-button {
+    background-color: #008cff;
+    color: white;
+    width: 15vw;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  .send-button:hover {
+    background-color: #45a049;
+  }
+  #chat-log {
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    height: 75vh;
+    overflow-y: scroll;
+    padding: 10px;
+  }
+  .project_container{
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
