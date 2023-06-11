@@ -43,22 +43,22 @@ function fetchProjectData() {
     // Use the appropriate server-side language and database driver to execute the query
 
     // For this example, let's assume the API returns the following JSON data
-    return {
-        title: "Your Project Title",
-        description: "Your project description goes here.",
-        skills: "List of skills involved in the project."
-    };
+    return fetch('/projects/')
+    .then(response => response.json())
+    .then(data => data[0]); // Assuming you want to display the first project in the response data
 }
+
 
 // Function to update the project page with the fetched data
 function updateProjectPage(data) {
-    document.getElementById("project-title").innerText = data.title;
-    document.getElementById("project-description").innerText = data.description;
-    document.getElementById("project-skills").innerText = data.skills;
+  document.getElementById("project-title").innerText = data.title;
+  document.getElementById("project-description").innerText = data.description;
+  document.getElementById("project-skills").innerText = data.skills;
 }
 
+
 // Fetch project data and update the page when it loads
-window.addEventListener("load", function() {
-    var projectData = fetchProjectData();
-    updateProjectPage(projectData);
+window.addEventListener("DOMContentLoaded", function() {
+  fetchProjectData()
+      .then(projectData => updateProjectPage(projectData));
 });
