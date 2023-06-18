@@ -19,9 +19,6 @@ from appname.views import project_list
 from django.contrib import admin
 from django.urls import path
 urlpatterns = [
-    path('projects/', project_list, name='project_list'),
-]
-urlpatterns = [
     path("admin/", admin.site.urls),
+    path('explore/', project_list, name='project_list'),
 ]
-
