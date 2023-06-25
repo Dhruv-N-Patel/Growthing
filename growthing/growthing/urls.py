@@ -15,10 +15,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from appname.views import project_list
-
+from appname.views import generate_roadmap
 from django.contrib import admin
 from django.urls import path
+from appname import views
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('explore/', project_list, name='project_list'),
+    path("assistant/",views.assistant,name='assistant'),
+    path('ongoing/', views.ongoing, name='ongoing'),
+    path('', views.index, name='index' ),
+    path("project/", views.project_content, name="project"),
+    # path('roadmap/', views.roadmap,name='roadmap')
 ]
