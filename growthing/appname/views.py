@@ -5,17 +5,27 @@ import os
 import openai
 from dotenv import load_dotenv, find_dotenv
 from django.contrib import messages
+from django.conf import settings
+from django.shortcuts import redirect
 
 # Create your views here.
 def project_list(request):
     projects = Project.objects.all()
-    # project_data = [{'title': project.title, 'description': project.description, 'skills': project.skills} for project in projects]
     programming = Project.objects.filter(genre='programming')
     design = Project.objects.filter(genre='design')
     marketing = Project.objects.filter(genre='marketing')
     video_editing = Project.objects.filter(genre='video editing')
     misc = Project.objects.filter(genre='misc')
     return render(request, "explore.html", context={'projects':projects, 'programming':programming, 'design':design,'marketing':marketing,'video_editing':video_editing, 'misc':misc})
+
+def ongoing_project_list(request):
+    projects = Roadmap.objects.all()
+    programming = Roadmap.objects.filter(genre='programming')
+    design = Roadmap.objects.filter(genre='design')
+    marketing = Roadmap.objects.filter(genre='marketing')
+    video_editing = Roadmap.objects.filter(genre='video editing')
+    misc = Roadmap.objects.filter(genre='misc')
+    return render(request, "myhome.html", context={'projects':projects, 'programming':programming, 'design':design,'marketing':marketing,'video_editing':video_editing, 'misc':misc})
 
 def explore(request):
     context={
@@ -28,7 +38,6 @@ def assistant(request):
     "previos_chatings1":"this is your previous chattings"
     }
     return render(request,'assistant.html', context)
-    # return HttpResponse("hey I am assistant")
 
 def ongoing(request): 
     context={
@@ -43,49 +52,73 @@ def index(request):
     messages.success(request, 'this is test message')
     return render(request, 'index.html', context)
 
-def project_content(request):
-    projects = Project.objects.all()
-    # programming = Project.objects.filter(tag='programming') 
-    # design = Project.objects.filter(tag='design')
-    # marketing = Project.objects.filter(tag='marketing')
-    # video_editing = Project.objects.filter(tag='video editing')
-    # misc = Project.objects.filter(tag='misc')
-    project_data = [{'title': project.title, 'description': project.description, 'skills': project.skills, 'id':project.project_id} for project in projects]
-    project_pro001 = Project.objects.filter(project_id='pro001')
+def project_content(request,pk):
+    project = Project.objects.get(project_id = pk)
+    return render(request,'project.html', context={'project':project })
 
-    # return render(request, "explore.html", context={'projects':projects, 'programming':programming, 'design':design,'marketing':marketing,'video_editing':video_editing, 'misc':misc})
+def show_roadmap(request):
+    roadmap_url = f'/roadmap/{pk}'
+    return redirect('roadmap_url')
 
-    return render(request,'project.html', context={'project_pro001':project_pro001,'content':project_data })
+roadmap_status = {}
 
-def generate_roadmap(request):
+def generate_roadmap(request,pk):
+    global roadmap_status
+    
+    if pk in roadmap_status and roadmap_status[pk]:
+        roadmap_content = Roadmap.objects.get(project_id = pk)
+        lines = roadmap_content.generate_roadmap.split('\n')
+        return render(request, 'roadmap.html', {'roadmap':roadmap_content, 'lines': lines})
+
+    else:
+
+        api_key = settings.OPENAI_SETTINGS['api_key']
+
+    openai.api_key = api_key
     # Retrieve projects from the database
-    projects = Project.objects.all()
-
-    # Prepare input data for OpenAI API
-    input_data = ""
-    for project in projects:
-        input_data += f"Project Title: {project.title}\n"
-        input_data += f"Project Description: {project.description}\n"
-        input_data += f"Skills: {project.skills}\n\n"
+    project = Project.objects.get(project_id = pk)
 
     # Make request to OpenAI API
     response = openai.Completion.create(
-        engine="text-davinci-003",
-        prompt=f"make roadmap of the project title whose discription is Project Description and which involve Skills",
-        max_tokens=500,  # Adjust the token count as per your needs
-        temperature=0.1,  # Adjust the temperature value for desired creativity
-        n=1,  # Adjust the 'n' value to control the number of responses generated
-        stop=None,
-    )
+    #     model="gpt-3.5-turbo",
+    #     messages=[
+    #             {"role": "system", "content": "You are a helpful assistant."},
+    #             {"role": "user", "content": "Who won the world series in 2020?"},
+    #             {"role": "assistant", "content": "The Los Angeles Dodgers won the World Series in 2020."},
+    #             {"role": "user", "content": "Where was it played?"}
+    # ]
 
+         engine="text-davinci-003",
+         prompt=f"I want to make a project in {project.genre} which is I want to {project.title}.{project.description}. You have to make a roadmap for the project such a way that I can learn the required skills and then implement them. Keep the work as minimised as possible and be objective orientated. Properly define each step and tasks to be done in each step. Make sure your output has each step separated by /n and in each step, tasks should be separated useing ','. ",
+         max_tokens=500,
+         temperature=1,  
+         n=1,  
+         stop=None,
+    )
+    
     # Process the API response
     generated_roadmap = response.choices[0].text.strip()
-
     # Save the roadmap in the 'roadmap' database
     roadmap = Roadmap(
-        project_name=projects[0].title,  # g there's only one project for simplicity
-        roadmap=generated_roadmap,
+        generate_roadmap=generated_roadmap,
+        title = project.title,
+        description = project.description,
+        skills = project.skills,
+        genre = project.genre,
+        project_id = project.project_id,
     )
     roadmap.save()
 
-    return render(request, 'generate_roadmap.html', {'roadmap': roadmap})
+    roadmap_status[pk] = True
+    lines = roadmap.generate_roadmap.split('\n')
+
+    return render(request, 'roadmap.html', {'roadmap': roadmap, 'lines': lines})
+
+# def show_roadmap(request, pk):
+#     global roadmap_status
+
+#     if pk in roadmap_status and roadmap_status[pk]:
+
+#         roadmap_content = Roadmap.objects.get(project_id = pk)
+
+#     return render(request, 'roadmap.html', {'roadmap':roadmap_content})

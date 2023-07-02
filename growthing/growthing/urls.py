@@ -26,6 +26,9 @@ urlpatterns = [
     path("assistant/",views.assistant,name='assistant'),
     path('ongoing/', views.ongoing, name='ongoing'),
     path('', views.index, name='index' ),
-    path("project/", views.project_content, name="project"),
+    path("project/<str:pk>/", views.project_content, name="project"),
+    path("roadmap/<str:pk>/", views.generate_roadmap, name="roadmap"),
+    path("project/<str:pk>/", views.show_roadmap, name="project"),
+    # path("roadmap/<str:pk>/", views.show_roadmap, name="roadmap"),
     # path('roadmap/', views.roadmap,name='roadmap')
 ]

@@ -92,9 +92,9 @@
   .sideView{
     background: #30343A;
     width: 20vw;
- height: 100vh;
- color: white;
- padding-left: 20px;
+    height: 92.5vh;
+    color: white;
+    padding-left: 20px;
   }
   .nav{
     flex-direction: column;
@@ -111,6 +111,7 @@
   }
   .project-card{
     margin-top: 10px;
+
   }
   .project-cards-main{
     width: auto;
@@ -118,12 +119,17 @@
   .tab-content .active{
  display: flex;
   }
+  .bg_design{
+    background-color: #D7F5FF;
+    height: 92.5vh;
+    width: 100vw;
+  }
 
   </style>
 </head>
 <body>
   {% load static %}
-  <header>
+  <header>                    
     <nav class="navbar navbar-expand-lg bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">Growthing</a>
@@ -175,6 +181,7 @@
         </li>
       </ul>
     </div>
+    <div class="bg_design">
     <div class="main-page">
       <div class="tab-content project-cards-main">
         <div id="all" class="tab-pane fade show active project-cards">
@@ -185,7 +192,8 @@
               <h5 class="card-title">{{project.title}}</h5>
               <p class="card-text">{{project.description}}</p>
               <p class="card-text">{{project.genre}}</p>
-              <a href="project.html" class="btn btn-primary">Open project</a>
+              <p class="card-text">{{project.project_id}}</p>
+              <a href={% url 'project' pk=project.project_id %} class="btn btn-primary">Open project</a>
             </div>
           </div>
           {% endfor %}
@@ -198,7 +206,7 @@
               <h5 class="card-title">{{project.title}}</h5>
               <p class="card-text">{{project.description}}</p>
               <p class="card-text">{{project.genre}}</p>
-              <a href="project.html" class="btn btn-primary">Open project</a>
+              <a href={% url 'project' pk=project.project_id %} class="btn btn-primary">Open project</a>
             </div>
           </div>
           {% endfor %}
@@ -212,7 +220,7 @@
                 <p class="card-text">{{project.description}}</p>
                 <p class="card-text">{{project.genre}}</p>
                 <p class="card-text">{{project.skills}}</p>
-                <a href="project.html" class="btn btn-primary">Open project</a>
+                <a href={% url 'project' pk=project.project_id %} class="btn btn-primary">Open project</a>
               </div>
           </div>
           {%endfor %}
@@ -227,7 +235,7 @@
             <p class="card-text">{{project.description}}</p>
             <p class="card-text">{{project.genre}}</p>
             <p class="card-text">{{project.skills}}</p>
-            <a href="project.html" class="btn btn-primary">Open project</a>
+            <a href={% url 'project' pk=project.project_id %} class="btn btn-primary">Open project</a>
           </div>
         </div>
         {%endfor %}
@@ -241,7 +249,7 @@
               <p class="card-text">{{project.description}}</p>
               <p class="card-text">{{project.genre}}</p>
               <p class="card-text">{{project.skills}}</p>
-              <a href="project.html" class="btn btn-primary">Open project</a>
+              <a href={% url 'project' pk=project.project_id %} class="btn btn-primary">Open project</a>
             </div>
           </div>
           {%endfor %}
@@ -255,7 +263,7 @@
               <p class="card-text">{{project.description}}</p>
               <p class="card-text">{{project.genre}}</p>
               <p class="card-text">{{project.skills}}</p>
-              <a href="project.html" class="btn btn-primary">Open project</a>
+              <a href={% url 'project' pk=project.project_id %} class="btn btn-primary">Open project</a>
             </div>
           </div>
           {%endfor %}
@@ -267,6 +275,7 @@
       <!-- Display the list of projects here -->
     </div>
   </main>
+</div>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 </body>
