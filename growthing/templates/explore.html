@@ -125,7 +125,10 @@
     width: 100vw;
   }
 
-  </style>
+</style>
+
+  <meta charset="UTF-8">
+
 </head>
 <body>
   {% load static %}
@@ -187,7 +190,8 @@
         <div id="all" class="tab-pane fade show active project-cards">
           {% for project in projects %}    
           <div  class="project-card" style="width: 18rem;">
-            <img src="{% static 'card.png' %}" class="" alt="...">
+            <p> &#128516; </p>
+            {% comment %} <img src="{% static 'card.png' %}" class="" alt="..."> {% endcomment %}
             <div class="card-body">
               <h5 class="card-title">{{project.title}}</h5>
               <p class="card-text">{{project.description}}</p>

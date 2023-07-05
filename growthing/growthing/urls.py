@@ -17,7 +17,7 @@ Including another URLconf
 from appname.views import project_list
 from appname.views import generate_roadmap
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from appname import views
 
 urlpatterns = [
@@ -31,4 +31,9 @@ urlpatterns = [
     path("project/<str:pk>/", views.show_roadmap, name="project"),
     # path("roadmap/<str:pk>/", views.show_roadmap, name="roadmap"),
     # path('roadmap/', views.roadmap,name='roadmap')
+    # path("signup/", views.signup, name="signup"),
+    # path('activate/<uidb64>/<token>', views.activate, name='activate'),
+    # path("signin/", views.signin, name="signin"),
+    # path("signout/", views.signout, name="signout"),
+    path('', include('authentication.urls'))
 ]
