@@ -24,16 +24,14 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('explore/', project_list, name='project_list'),
     path("assistant/",views.assistant,name='assistant'),
-    path('ongoing/', views.ongoing, name='ongoing'),
+    path('home/', views.ongoing, name='home'),
     path('', views.index, name='index' ),
     path("project/<str:pk>/", views.project_content, name="project"),
     path("roadmap/<str:pk>/", views.generate_roadmap, name="roadmap"),
     path("project/<str:pk>/", views.show_roadmap, name="project"),
-    # path("roadmap/<str:pk>/", views.show_roadmap, name="roadmap"),
-    # path('roadmap/', views.roadmap,name='roadmap')
-    # path("signup/", views.signup, name="signup"),
+    path("signup/", views.signup, name="signup"),
     # path('activate/<uidb64>/<token>', views.activate, name='activate'),
-    # path("signin/", views.signin, name="signin"),
-    # path("signout/", views.signout, name="signout"),
-    path('', include('authentication.urls'))
+    path("signin/", views.signin, name="signin"),
+    path("signout/", views.signout, name="signout"),
+    path('', include('appname.urls'))
 ]

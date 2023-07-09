@@ -17,7 +17,7 @@
     {{ form.as_p }}
     <button type="submit">Sign up</button>
   </form> {% endcomment %}
-  <form method="post" action="/signup">
+  <form method="post">
     {% csrf_token %}
     <div class="form-group">
         <label for="username">Username</label>

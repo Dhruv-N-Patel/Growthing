@@ -2,128 +2,207 @@
 <html>
 <head>
   <title>Explore Projects</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 <style>
+  body {
+    font-family: 'Poppins';font-size: 22px;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    /* Other global styles */
+  }
   .container{
   height:80vh;
   width:70vw;
-  }
-  .grid-container {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-gap: 10px;
-  }
-  
-  .grid-item {
-    background-color: #ccc;
-    padding: 10px;
-  }
-  .input-container {
-    position: relative;
-    display: flex;
-    height: 8vh;
-    width: 80vw;
-  }
-  
-  .custom-input {
-    width: 100%;
-    padding: 10px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  .custom-input:focus {
-    outline: none;
-    border-color: #6c63ff;
-    box-shadow: 0 0 5px #6c63ff;
-  }
-  
-  .custom-input::placeholder {
-    color: #999;
-  }
-  
-  .custom-input:hover::placeholder {
-    color: #666;
-  }
-  .send-button {
-    background-color: #008cff;
-    color: white;
-    width: 15vw;
-    border: none;
-    border-radius: 5px;
-    padding: 8px 16px;
-    margin-left: 10px;
-    cursor: pointer;
-  }
-  
-  .send-button:hover {
-    background-color: #45a049;
-  }
-  #chat-log {
-    background-color: #f4f4f4;
-    border: 1px solid #ccc;
-    height: 75vh;
-    overflow-y: scroll;
-    padding: 10px;
-  }
-  .project_container{
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-  }
-  .central_heading{
-    text-align: center;
-    padding: 10px;
-  }
-  .center-div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .tabcontainer{
- display: flex;
   }
   .flex{
     display: flex;
   }
   .sideView{
-    background: #30343A;
+    background: #CDE6F5;
     width: 20vw;
-    height: 92.5vh;
-    color: white;
+    height: 93vh;
+    color: #18020c;
     padding-left: 20px;
+    position: sticky;
+    top: 0;
   }
   .nav{
     flex-direction: column;
-    color: white;
+    color: #18020c;
   }
   .nav-link{
-    color: white;
+    color: #18020c;
   }
-  .project-cards{
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin: 20px;
-  }
-  .project-card{
-    margin-top: 10px;
 
-  }
-  .project-cards-main{
-    width: auto;
-  }
-  .tab-content .active{
- display: flex;
-  }
   .bg_design{
-    background-color: #D7F5FF;
-    height: 92.5vh;
+    display: flex;
+    background-color: #F6F5FA;
+    height: 93vh;
     width: 100vw;
   }
+  .navbar {
+    background-color: #F6F5FA;
+    overflow: hidden;
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
+    height: 7vh;
+  }
+  
+  .navbar a {
+    float: left;
+    color: #18020c;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .navbar a:hover {
+    background-color: #ddd;
+    color: #18020c;
+  }
+  
+  .navbar .logo {
+    display: block;
+    float: left;
+    padding: 14px 16px;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #0066FF;
+  }
+  
+  .navbar .search-bar {
+    display: flex;
+    float: left;
+    margin-left: 20px;
+    align-items: center;
+  }
+
+  .navbar .search-bar input[type="text"] {
+  margin: 7px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  width: 200px;
+}
+.navbar .search-bar button[type="submit"] {
+  padding: 10px 20px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+  
+  .navbar .user-button {
+    float: right;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #007bff;
+    cursor: pointer;
+    margin: 7px;
+
+  }
+  
+  .navbar::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .filter-container {
+  display: flex;
+}
+
+.filter-group {
+  margin-right: 20px;
+}
+.product-list{
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.vertical-slider {
+  position: fixed;
+  top: 50%; /* Adjust the top position as needed */
+  right: 0; /* Position the slider on the right side */
+  transform: translateY(-50%);
+  width: 50px; /* Adjust the width as needed */
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+.projects-view{
+  display:flex;
+}
+.project-card{
+  padding: 20px;
+  margin: 10px;
+  width: 250px;
+  height: 250px;
+  flex-shrink: 0;
+  border-radius: 15px;
+  background-color: #CDE6F5;
+}
+.project-card p{
+  font-size: 16px;
+  padding-bottom: 3px;
+  padding-top: 3px;
+  margin: 0px;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Number of lines to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.project-card h5{
+  font-size: 20px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  margin: 0px;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Number of lines to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.project-card a {
+  text-decoration: none;
+  color: #fff;
+}
+.open-project-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #007bff;
+  cursor: pointer;
+}
+
+.open-project-button:hover {
+  background-color: #0056b3;
+}
+
+.open-project-button:active {
+  background-color: #003080;
+}
 
 </style>
 
@@ -132,155 +211,172 @@
 </head>
 <body>
   {% load static %}
-  <header>                    
-    <nav class="navbar navbar-expand-lg bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/">Growthing</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="/explore">Explore</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/ongoing">Ongoing</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/assistant">Assistant</a>
-            </li>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </ul>
-        </div>
+  <header>
+    <nav style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2)">                    
+    <div class="navbar">
+      <a class="logo" href="/">Growthing</a>
+      <a href="/home">Home</a>
+      <a href="/explore">Explore</a>
+      <a href="/assistant">Assistant</a>
+      <div class="search-bar">
+        <input type="text" placeholder="Search...">
+        <button type="submit">Search</button>
       </div>
-    </nav>
+      <button class="user-button">Sign In</button>
+    </div>
+  </nav>
   </header>
   <main class="flex">
     <div class="sideView">
       <h2>Filters</h2>
-      <h4>Genre</h4>
-      <ul class="nav nav-pills">
-        <li class="nav-item">
-            <a class="nav-link active" data-bs-toggle="pill" href="#all">All</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="pill" href="#programming">Programming</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="pill" href="#design">Design</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="pill" href="#video_editing">Video Editing</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="pill" href="#marketing">Marketing</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="pill" href="#misc">Misc</a>
-        </li>
-      </ul>
+        <h3>Genre</h3>
+          <li class="nav-item">
+            <a class="nav-link active" href="#all">All</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#programming">Programming</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#design">Design</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#video_editing">Video Editing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#marketing">Marketing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#misc">Misc</a>
+          </li>
     </div>
     <div class="bg_design">
-    <div class="main-page">
-      <div class="tab-content project-cards-main">
-        <div id="all" class="tab-pane fade show active project-cards">
+      <div class="product-list">
+        <div id="all" class="projects-view">
           {% for project in projects %}    
-          <div  class="project-card" style="width: 18rem;">
-            <p> &#128516; </p>
-            {% comment %} <img src="{% static 'card.png' %}" class="" alt="..."> {% endcomment %}
-            <div class="card-body">
-              <h5 class="card-title">{{project.title}}</h5>
-              <p class="card-text">{{project.description}}</p>
-              <p class="card-text">{{project.genre}}</p>
-              <p class="card-text">{{project.project_id}}</p>
-              <a href={% url 'project' pk=project.project_id %} class="btn btn-primary">Open project</a>
-            </div>
+          <div class="project-card">
+            <p>{{ project.emoji }}</p>
+            <h5>{{ project.title }}</h5>
+            <p>{{ project.description }}</p> 
+            <p>{{ project.genre }}</p>
+            <p>{{ project.project_id }}</p>
+            <a href="{% url 'project' pk=project.project_id %}">
+              <button class="open-project-button" >Open project</button>
+            </a>
           </div>
           {% endfor %}
         </div>
-        <div id="programming" class="tab-pane fade project-cards">
+        
+        <div id="programming" class="projects-view">
           {% for project in programming %}    
-          <div  class="project-card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">{{project.title}}</h5>
-              <p class="card-text">{{project.description}}</p>
-              <p class="card-text">{{project.genre}}</p>
-              <a href={% url 'project' pk=project.project_id %} class="btn btn-primary">Open project</a>
-            </div>
+          <div class="project-card">
+              <h5>{{ project.title }}</h5>
+              <p>{{ project.description }}</p>
+              <p>{{ project.genre }}</p>
+              <p>{{ project.project_id }}</p>
+              <a href="{% url 'project' pk=project.project_id %}">
+                <button class="open-project-button" >Open project</button>
+              </a>
           </div>
           {% endfor %}
         </div>
-        <div id="design" class="tab-pane fade project-cards">
+        
+        <div id="design">
           {% for project in design %}   
-          <div class="project-card" style="width: 18rem;">
-              <img src="..." class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">{{project.title}}</h5>
-                <p class="card-text">{{project.description}}</p>
-                <p class="card-text">{{project.genre}}</p>
-                <p class="card-text">{{project.skills}}</p>
-                <a href={% url 'project' pk=project.project_id %} class="btn btn-primary">Open project</a>
-              </div>
-          </div>
-          {%endfor %}
-      </div>
-      <div id="marketing" class="tab-pane fade project-cards">
-        {% for project in marketing %}   
-        <!-- Content for the marketing tab -->
-        <div class="project-card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">{{project.title}}</h5>
-            <p class="card-text">{{project.description}}</p>
-            <p class="card-text">{{project.genre}}</p>
-            <p class="card-text">{{project.skills}}</p>
-            <a href={% url 'project' pk=project.project_id %} class="btn btn-primary">Open project</a>
-          </div>
+          <div class="project-card">
+            <h5>{{ project.title }}</h5>
+            <p>{{ project.description }}</p>
+            <p>{{ project.genre }}</p>
+            <p>{{ project.project_id }}</p>
+            <a href="{% url 'project' pk=project.project_id %}">
+              <button class="open-project-button" >Open project</button>
+            </a>
         </div>
-        {%endfor %}
+          {% endfor %}
+        </div>
+
+        <div id="video_editing">
+          {% for project in video_editing %}    
+          <div class="project-card">
+            <h5>{{ project.title }}</h5>
+            <p>{{ project.description }}</p>
+            <p>{{ project.genre }}</p>
+            <p>{{ project.project_id }}</p>
+            <a href="{% url 'project' pk=project.project_id %}">
+              <button class="open-project-button" >Open project</button>
+            </a>
+        </div>
+          {% endfor %}
+        </div>
+
+        <div id="marketing">
+          {% for project in marketing %}    
+          <div class="project-card">
+            <h5>{{ project.title }}</h5>
+            <p>{{ project.description }}</p>
+            <p>{{ project.genre }}</p>
+            <p>{{ project.project_id }}</p>
+            <a href="{% url 'project' pk=project.project_id %}">
+              <button class="open-project-button" >Open project</button>
+            </a>
+        </div>
+          {% endfor %}
+        </div>
+
+        <div id="misc">
+          {% for project in misc %}    
+          <div class="project-card">
+            <h5>{{ project.title }}</h5>
+            <p>{{ project.description }}</p>
+            <p>{{ project.genre }}</p>
+            <p>{{ project.project_id }}</p>
+            <a href="{% url 'project' pk=project.project_id %}">
+              <button class="open-project-button" >Open project</button>
+            </a>
+        </div>
+          {% endfor %}
+        </div>
+
+
       </div>
-      <div id="video_editing" class="tab-pane fade project-cards" >
-        {% for project in video_editing %}   
-        <div class="project-card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">{{project.title}}</h5>
-              <p class="card-text">{{project.description}}</p>
-              <p class="card-text">{{project.genre}}</p>
-              <p class="card-text">{{project.skills}}</p>
-              <a href={% url 'project' pk=project.project_id %} class="btn btn-primary">Open project</a>
-            </div>
-          </div>
-          {%endfor %}
+      
     </div>
-      <div id="misc" class="tab-pane fade project-cards">
-        {% for project in misc %}
-        <div class="project-card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">{{project.title}}</h5>
-              <p class="card-text">{{project.description}}</p>
-              <p class="card-text">{{project.genre}}</p>
-              <p class="card-text">{{project.skills}}</p>
-              <a href={% url 'project' pk=project.project_id %} class="btn btn-primary">Open project</a>
-            </div>
-          </div>
-          {%endfor %}
-    </div>
-      </div>
-    </div>
-   
     <div id="project-list">
       <!-- Display the list of projects here -->
     </div>
   </main>
 </div>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+<script>
+    // JavaScript code to handle navigation
+
+    // Get all the navigation links
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    // Get all the project sections
+    const projectSections = document.querySelectorAll('.product-list > div');
+
+    // Function to show the selected project section and hide others
+    function showSection(sectionId) {
+      projectSections.forEach(section => {
+        if (section.id === sectionId) {
+          section.style.display = 'block';
+        } else {
+          section.style.display = 'none';
+        }
+      });
+    }
+
+    // Event listener for navigation links
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(event) {
+        event.preventDefault();
+        const sectionId = this.getAttribute('href').substr(1);
+        showSection(sectionId);
+      });
+    });
+
+    // Show the initial selected section (default: 'all')
+    showSection('all');
+
+  </script>
 </body>
 </html>

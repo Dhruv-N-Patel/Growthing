@@ -13,9 +13,13 @@ from django.core.mail import send_mail, EmailMessage
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
-from django.utils.encoding import force_bytes, force_text
+from django.utils.encoding import force_bytes, force_str
 from django.contrib.auth import authenticate, login, logout
 from . tokens import generate_token
+from django.contrib.auth.models import User
+from django.db import models
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 def project_list(request):
@@ -28,7 +32,7 @@ def project_list(request):
     return render(request, "explore.html", context={'projects':projects, 'programming':programming, 'design':design,'marketing':marketing,'video_editing':video_editing, 'misc':misc})
 
 def home(request):
-    return render(request, "ongoing.html")
+    return render(request, "home.html")
 
 def ongoing_project_list(request):
     projects = Roadmap.objects.all()
@@ -37,7 +41,7 @@ def ongoing_project_list(request):
     marketing = Roadmap.objects.filter(genre='marketing')
     video_editing = Roadmap.objects.filter(genre='video editing')
     misc = Roadmap.objects.filter(genre='misc')
-    return render(request, "myhome.html", context={'projects':projects, 'programming':programming, 'design':design,'marketing':marketing,'video_editing':video_editing, 'misc':misc})
+    return render(request, "home.html", context={'projects':projects, 'programming':programming, 'design':design,'marketing':marketing,'video_editing':video_editing, 'misc':misc})
 
 def explore(request):
     context={
@@ -55,7 +59,7 @@ def ongoing(request):
     context={
         "My_projects":"all my projects will be shown here"
     }
-    return render(request,'ongoing.html', context)
+    return render(request,'home.html', context)
 
 def index(request):
     context={
@@ -76,7 +80,13 @@ roadmap_status = {}
 
 def generate_roadmap(request,pk):
     global roadmap_status
-    
+    if request.method == 'POST':
+        result = Roadmap(user=request.user)
+        if request.user.is_authenticated:
+            result.user = request.user
+
+        result.save()
+
     if pk in roadmap_status and roadmap_status[pk]:
         roadmap_content = Roadmap.objects.get(project_id = pk)
         lines = roadmap_content.generate_roadmap.split('\n')
@@ -100,12 +110,12 @@ def generate_roadmap(request,pk):
     #             {"role": "user", "content": "Where was it played?"}
     # ]
 
-         engine="text-davinci-003",
-         prompt=f"I want to make a project in {project.genre} which is I want to {project.title}.{project.description}. You have to make a roadmap for the project such a way that I can learn the required skills and then implement them. Keep the work as minimised as possible and be objective orientated. Properly define each step and tasks to be done in each step. Make sure your output has each step separated by /n and in each step, tasks should be separated useing ','. ",
-         max_tokens=500,
-         temperature=1,  
-         n=1,  
-         stop=None,
+        engine="text-davinci-003",
+        prompt=f"I want to make a project in {project.genre} which is I want to {project.title}.{project.description}. You have to make a roadmap for the project such a way that I can learn the required skills and then implement them. Keep the work as minimised as possible and be objective orientated. Properly define each step and tasks to be done in each step. Make sure your output has each step separated by /n and in each step, tasks should be separated useing ','. ",
+        max_tokens=500,
+        temperature=1,  
+        n=1,  
+        stop=None,
     )
     
     # Process the API response
@@ -114,15 +124,22 @@ def generate_roadmap(request,pk):
     roadmap = Roadmap(
         generate_roadmap=generated_roadmap,
         title = project.title,
+        emoji = project.emoji,
         description = project.description,
         skills = project.skills,
+        tools = project.tools,
         genre = project.genre,
         project_id = project.project_id,
+
     )
     roadmap.save()
 
+    
+
     roadmap_status[pk] = True
-    lines = roadmap.generate_roadmap.split('\n')
+    lines = roadmap.generate_roadmap.split('\n') 
+
+    
 
     return render(request, 'roadmap.html', {'roadmap': roadmap, 'lines': lines})
 
@@ -173,52 +190,52 @@ def signup(request):
         messages.success(request, "Your Account has been created succesfully!! Please check your email to confirm your email address in order to activate your account.")
         
         # Welcome Email
-        subject = "Welcome to GFG- Django Login!!"
-        message = "Hello " + myuser.first_name + "!! \n" + "Welcome to GFG!! \nThank you for visiting our website\n. We have also sent you a confirmation email, please confirm your email address. \n\nThanking You\nAnubhav Madhav"        
-        from_email = settings.EMAIL_HOST_USER
-        to_list = [myuser.email]
-        send_mail(subject, message, from_email, to_list, fail_silently=True)
+        # subject = "Welcome to GFG- Django Login!!"
+        # message = "Hello " + myuser.first_name + "!! \n" + "Welcome to GFG!! \nThank you for visiting our website\n. We have also sent you a confirmation email, please confirm your email address. \n\nThanking You\nAnubhav Madhav"        
+        # from_email = settings.EMAIL_HOST_USER
+        # to_list = [myuser.email]
+        # send_mail(subject, message, from_email, to_list, fail_silently=True)
         
-        # Email Address Confirmation Email
-        current_site = get_current_site(request)
-        email_subject = "Confirm your Email @ GFG - Django Login!!"
-        message2 = render_to_string('email_confirmation.html',{
+        # # Email Address Confirmation Email
+        # current_site = get_current_site(request)
+        # email_subject = "Confirm your Email @ GFG - Django Login!!"
+        # message2 = render_to_string('email_confirmation.html',{
             
-            'name': myuser.first_name,
-            'domain': current_site.domain,
-            'uid': urlsafe_base64_encode(force_bytes(myuser.pk)),
-            'token': generate_token.make_token(myuser)
-        })
-        email = EmailMessage(
-        email_subject,
-        message2,
-        settings.EMAIL_HOST_USER,
-        [myuser.email],
-        )
-        email.fail_silently = True
-        email.send()
+        #     'name': myuser.first_name,
+        #     'domain': current_site.domain,
+        #     'uid': urlsafe_base64_encode(force_bytes(myuser.pk)),
+        #     'token': generate_token.make_token(myuser)
+        # })
+        # email = EmailMessage(
+        # email_subject,
+        # message2,
+        # settings.EMAIL_HOST_USER,
+        # [myuser.email],
+        # )
+        # email.fail_silently = True
+        # email.send()
         
         return redirect('signin')
         
         
-    return render(request, "signin.html")
+    return render(request, "signup.html")
 
-def activate(request,uidb64,token):
-    try:
-        uid = force_text(urlsafe_base64_decode(uidb64))
-        myuser = User.objects.get(pk=uid)
-    except (TypeError,ValueError,OverflowError,User.DoesNotExist):
-        myuser = None
+# def activate(request,uidb64,token):
+#     try:
+#         uid = force_str(urlsafe_base64_decode(uidb64))
+#         myuser = User.objects.get(pk=uid)
+#     except (TypeError,ValueError,OverflowError,User.DoesNotExist):
+#         myuser = None
 
-    if myuser is not None and generate_token.check_token(myuser,token):
-        myuser.is_active = True
-        # user.profile.signup_confirmation = True
-        myuser.save()
-        login(request,myuser)
-        messages.success(request, "Your Account has been activated!!")
-        return redirect('signin')
-    else:
-        return render(request,'activation_failed.html')
+#     if myuser is not None and generate_token.check_token(myuser,token):
+#         myuser.is_active = True
+#         # user.profile.signup_confirmation = True
+#         myuser.save()
+#         login(request,myuser)
+#         messages.success(request, "Your Account has been activated!!")
+#         return redirect('signin')
+#     else:
+#         return render(request,'activation_failed.html')
     
 def signin(request):
     if request.method == 'POST':
