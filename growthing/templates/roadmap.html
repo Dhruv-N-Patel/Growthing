@@ -1,95 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roadmap Page</title>
-    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roadmap Page</title>
+  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
   <style>
     /* CSS styles for the page */
     body {
-      font-family: 'Poppins';font-size: 22px;
+      font-family: 'Poppins';
+      font-size: 22px;
       margin: 0;
       padding: 0;
       height: 100%;
+      background-color: #f6f5fa;
       /* Other global styles */
     }
-  .navbar {
-    background-color: #F6F5FA;
-    overflow: hidden;
-    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
-    height: 7vh;
-  }
-  
-  .navbar a {
-    float: left;
-    color: #18020c;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-  }
-  
-  .navbar a:hover {
+
+    .navbar {
+      background-color: #F6F5FA;
+      overflow: hidden;
+      box-shadow: 0px 4px 16px 0px rgba(24, 2, 12, 0.10);
+      height: 7vh;
+    }
+
+    .navbar a {
+      float: left;
+      color: #18020c;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+
+    /* .navbar a:hover {
     background-color: #ddd;
     color: #18020c;
-  }
-  
-  .navbar .logo {
-    display: block;
-    float: left;
-    padding: 14px 16px;
-    font-size: 20px;
-    font-weight: bold;
-    text-decoration: none;
-    color: #0066FF;
-  }
-  
-  .navbar .search-bar {
-    display: flex;
-    float: left;
-    margin-left: 20px;
-    align-items: center;
-  }
+  } */
 
-  .navbar .search-bar input[type="text"] {
-  margin: 7px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  width: 200px;
-}
-.navbar .search-bar button[type="submit"] {
-  padding: 10px 20px;
-  margin-left: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #007bff;
-  color: #fff;
-  cursor: pointer;
-}
-  
-  .navbar .user-button {
-    float: right;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    background-color: #007bff;
-    cursor: pointer;
-    margin: 7px;
+    .navbar .logo {
+      display: block;
+      float: left;
+      padding: 14px 16px;
+      font-size: 20px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #0066FF;
+    }
 
-  }
-  
-  .navbar::after {
-    content: "";
-    display: table;
-    clear: both;
-  }
+    .navbar .search-bar {
+      display: flex;
+      float: left;
+      margin-left: 20px;
+      align-items: center;
+    }
+
+    .navbar .search-bar input[type="text"] {
+      margin: 7px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 15px;
+      width: 200px;
+    }
+
+    .navbar .search-bar button[type="submit"] {
+      padding: 10px 20px;
+      margin-left: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .navbar .user-button {
+      float: right;
+      padding: 10px 20px;
+      font-size: 16px;
+      text-align: center;
+      text-decoration: none;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      background-color: #007bff;
+      cursor: pointer;
+      margin: 7px;
+
+    }
+
+    .navbar::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .navbar .user {
+      float: right;
+    }
+
+    .navbar .user .user-button {
+      float: right;
+      font-size: 16px;
+      text-align: center;
+      text-decoration: none;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      background-color: #007bff;
+      cursor: pointer;
+      margin: 7px;
+      padding: 10px;
+
+    }
+
+    .navbar .user a {
+      text-decoration: none;
+      color: #fff;
+      padding: 0px;
+      margin: 0px;
+    }
 
     main {
       display: flex;
@@ -99,61 +129,107 @@
 
     .project-details {
       flex: 0.35;
-      padding-right: 100px;
+      padding: 30px;
+      margin: 15px;
+      color: #4c4c4c;
+      background-color: #f6f5fa;
+      border-radius: 15px;
+    }
+
+    .project-details p{
+      font-size: 16px;
     }
 
     .roadmap {
       flex: 1;
+      padding: 30px;
+      margin: 15px;
+      border-radius: 15px;
+      background-color: #f6f5fa;
+      box-shadow: 0px 0px 25px 0px rgba(24, 2, 12, 0.10);
+    }
+    .roadmap p{
+      font-size: 16px;
+      margin: 5px;
     }
 
-    h1 {
-      margin-top: 0;
+    .roadmap .section h4{
+      margin: 5px;
     }
 
-    h2 {
-      margin-bottom: 5px;
-    }
-
-    ul {
-      padding-left: 20px;
-    }
-
-    li {
-      margin-bottom: 10px;
-    }
-      input[type="checkbox"] {
-        display: none;
-      }
+    .roadmap .section{
+      background-color: #cde6f5;
+      margin: 5px;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
       
-      label {
-        display: block;
-        padding-left: 25px;
-        position: relative;
-        cursor: pointer;
-      }
-      
-      label:before {
-        content: "";
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        border: 1px solid #999;
-        position: absolute;
-        left: 0;
-        top: 2px;
-      }
-      
-      input[type="checkbox"]:checked + label:before {
-        content: "\2713"; /* Checkmark symbol */
-        text-align: center;
-        line-height: 16px;
-      }
-    
+    }
+
+    label {
+      display: block;
+      padding-left: 25px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    label:before {
+      content: "";
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 1px solid #999;
+      position: absolute;
+      left: 0;
+      top: 2px;
+    }
+
+    input[type="checkbox"]:checked+label:before {
+      content: "\2713";
+      /* Checkmark symbol */
+      text-align: center;
+      line-height: 16px;
+    }
+    /* Style for sections */
+
+.roadmap .section li{
+  display: flex;
+  background: #f6f5fa;
+      margin: 5px;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 16px;
+}
+
+
+.section-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Style for tasks */
+.task {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.task input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+/* Style for completed tasks */
+.task.completed {
+  text-decoration: line-through;
+  color: #888;
+}
+
   </style>
 </head>
+
 <body>
-    
-  <nav style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2)">                    
+
+  <nav style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2)">
     <div class="navbar">
       <a class="logo" href="/">Growthing</a>
       <a href="/home">Home</a>
@@ -163,37 +239,113 @@
         <input type="text" placeholder="Search...">
         <button type="submit">Search</button>
       </div>
-      <button class="user-button">Sign In</button>
+      <div class="user">
+        {% if user.is_authenticated %}
+        <a href="/signout"><button class="user-button" type="submit">SignOut</button></a>
+        {% else %}
+        <a href="/signup"><button class="user-button" type="submit">SignUp</button></a>
+        <a href="/signin"><button class="user-button" type="submit">SignIn</button></a>
+        {% endif %}
+      </div>
     </div>
   </nav>
-    
-      <main>
-        <div class="project-details">
-          <h2>{{roadmap.title}}</h2>
-          <p>{{roadmap.description}}</p>
-          <p>{{roadmap.genre}}</p>
-          <p>{{roadmap.skills}}</p>
-          <p>{{roadmap.project_id}}</p>
-        </div>
-    
-        <div class="roadmap">
-          <h2>Roadmap</h2>
-            {% comment %} <li>{% for line in roadmap.generate_roadmap|linebreaksbr|safe %}
-              <p>{{ line }}</p>
-              {% endfor %}
-            </li> {% endcomment %}
-            <ul>
-              {% for line in lines %}
-                <li>
-                  <input type="checkbox" id="todo{{ forloop.counter }}" />
-                  <label for="todo{{ forloop.counter }}">{{ line }}</label>
-                </li>
-              {% endfor %}
-            </ul>
 
-            <!-- Add more roadmap points as needed --> 
-        </div>
-      </main>
+  <main>
+    <div class="project-details">
+      <h2>{{roadmap.title}}</h2>
+      <p>Description: <br>{{roadmap.description}}</p>
+      <p>Genre: <br>{{roadmap.genre}}</p>
+      <p>Skills: <br>{{roadmap.skills}}</p>
+      <p>Project ID: <br>{{roadmap.project_id}}</p>
+    </div>
+
+    <div class="roadmap">
+      <!-- <h2>Roadmap</h2> -->
+        <!-- {% for line in lines %}
+        <p>{{ line }}</p>
+        {% endfor %}
+      <ul>
+        {% for line in lines %}
+        <li style="display: ;">
+          {% comment %} <input type="checkbox" id="todo{{ forloop.counter }}" /> {% endcomment %}
+          <label for="todo{{ forloop.counter }}">{{ line }}</label>
+        </li> 
+        {% endfor %}
+      </ul> -->
+      <div id='container'></div>
+
+    </div>
       
+
+    
+  </main>
+  <script>
+    var json_input = '{{ roadmap.generate_roadmap | escapejs }}';
+    {% comment %} json_input= '{"Step_1": ["Task1", "Task2", "Task3", "Task n"],"Step_2": ["Task1", "Task2", "Task3", "Task n"],"Step_3": ["Task1", "Task2", "Task3", "Task n"]}' {% endcomment %}
+    var tasks = JSON.parse(json_input);
+
+// Get the container element to display the sections and tasks
+var container = document.getElementById('container');
+
+// Loop through each step in the JSON object
+for (var step in tasks) {
+  // Create a new section for the step
+  var section = document.createElement('div');
+  section.className = 'section';
+
+  // Create a heading for the step
+  var heading = document.createElement('h4');
+  heading.textContent = step;
+  section.appendChild(heading);
+
+  // Create a to-do list for the tasks
+  var taskList = document.createElement('div');
+
+  // Loop through each task in the step
+  for (var i = 0; i < tasks[step].length; i++) {
+    var task = tasks[step][i];
+
+    // // Create a list item for the task
+    // var listItem = document.createElement('li');
+
+    // // Create a checkbox for the task
+    // var checkbox = document.createElement('input');
+    // checkbox.type = 'checkbox';
+
+    // // Create a label for the task
+    // var label = document.createElement('label');
+    // label.textContent = task;
+
+    // Create a list item for the task
+    var listItem = document.createElement('li');
+    listItem.style.listStyle = 'none'; // Remove the bullet point
+
+    // Create a checkbox for the task
+    var checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+
+    // Create a label for the task
+    var label = document.createElement('div');
+    label.textContent = task;
+
+
+
+    // Append the checkbox and label to the list item
+    listItem.appendChild(checkbox);
+    listItem.appendChild(label);
+
+
+    // Append the list item to the task list
+    taskList.appendChild(listItem);
+  }
+
+  // Append the task list to the section
+  section.appendChild(taskList);
+
+  // Append the section to the container
+  container.appendChild(section);
+}
+  </script>
 </body>
+
 </html>

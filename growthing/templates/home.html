@@ -4,94 +4,221 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-    <title>Document</title>
+    <title>Home</title>
     <style>
-      body {
-        font-family: 'Poppins';font-size: 22px;
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        /* Other global styles */
-      }
-      .navbar {
-        background-color: #F6F5FA;
-        overflow: hidden;
-        box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
-        height: 7vh;
-      }
+body {
+  font-family: 'Poppins';font-size: 22px;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #F6F5FA;
+  }
+.navbar {
+  background-color: #F6F5FA;
+  overflow: hidden;
+  box-shadow: 0px 4px 16px 0px rgba(24, 2, 12, 0.10);
+  height: 7vh;
+  }
       
-      .navbar a {
-        float: left;
-        color: #18020c;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 17px;
-      }
+.navbar a {
+  float: left;
+  color: #18020c;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  }
       
-      .navbar a:hover {
-        background-color: #ddd;
-        color: #18020c;
-      }
+/* .navbar a:hover {
+  background-color: #ddd;
+  color: #18020c;
+  } */
       
-      .navbar .logo {
-        display: block;
-        float: left;
-        padding: 14px 16px;
-        font-size: 20px;
-        font-weight: bold;
-        text-decoration: none;
-        color: #0066FF;
-      }
+.navbar .logo {
+  display: block;
+  float: left;
+  padding: 14px 16px;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #0066FF;
+  }
       
-      .navbar .search-bar {
-        display: flex;
-        float: left;
-        margin-left: 20px;
-        align-items: center;
-      }
+.navbar .search-bar {
+  display: flex;
+  float: left;
+  margin-left: 20px;
+  align-items: center;
+  }
     
-      .navbar .search-bar input[type="text"] {
-      margin: 7px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 15px;
-      width: 200px;
-    }
-    .navbar .search-bar button[type="submit"] {
-      padding: 10px 20px;
-      margin-left: 10px;
-      border: none;
-      border-radius: 5px;
-      background-color: #007bff;
-      color: #fff;
-      cursor: pointer;
-    }
+.navbar .search-bar input[type="text"] {
+  margin: 7px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  width: 200px;
+  }
+.navbar .search-bar button[type="submit"] {
+  padding: 10px 20px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  }
       
-      .navbar .user-button {
-        float: right;
-        padding: 10px 20px;
-        font-size: 16px;
-        font-weight: bold;
-        text-align: center;
-        text-decoration: none;
-        border: none;
-        border-radius: 5px;
-        color: #fff;
-        background-color: #007bff;
-        cursor: pointer;
-        margin: 7px;
+.navbar .user{
+ float: right;
+  }
+
+.navbar .user .user-button {
+  float: right;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #007bff;
+  cursor: pointer;
+  margin: 7px;
+  padding: 10px;
+  }
+
+.navbar .user a{
+  text-decoration: none;
+  color: #fff;
+  padding: 0px;
+  margin: 0px;
+  }
+      
+.navbar::after {
+  content: "";
+  display: table;
+  clear: both;
+  }
+   
+.model-content{
+  padding: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.model-content .user-button {
+  float:center;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #007bff;
+  cursor: pointer;
+  margin: 7px;
+  padding: 10px;
+  }
+.model-content a{
+  text-decoration: none;
+  color: #fff;
+  padding: 0px;
+  margin: 0px;
+  }
+
+ .home-card{
+  width: 70vw;
+  height: 250px;
+  flex-shrink: 0;
+  border-radius: 15px;
+  background: linear-gradient(146deg, #06F 0%, #0899F0 100%);
+  margin-left: auto;
+  margin-right: auto;
+ }
+.home-card .greeting{
+  color: #F6F5FA;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-align: center;
+ }
+.home-card .search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
     
-      }
-      
-      .navbar::after {
-        content: "";
-        display: table;
-        clear: both;
-      }
+.home-card .search-bar input[type="text"] {
+  margin: 7px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 700px;
+  }
+.home-card .search-bar button[type="submit"] {
+  padding: 10px 10px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #F6F5FA;
+  color: #0059ff;
+  cursor: pointer;
+  }
+.home-card .redirect-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home-card .redirect-button .btn{
+ margin:10px;
+ text-align: center;
+ color: #F6F5FA;
+}
+.home-card .redirect-button .btn p{
+  margin: 0px;
+}
+.ongoing-projects{
+  margin: 00px auto;
+  width: 70vw;
+  margin-top: 20px;
+}
+.ongoing-card{
+  padding: 10px;
+  margin: 0px 10px;
+  background-color: #cde6f5;
+  width: 200px;
+  height: 200px;
+  border-radius: 15px;
+  font-size: 16px;
+}
+.ongoing-container{
+  display: flex;
+}
+.ongoing-card p{
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.open-project-button{
+  float:center;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #007bff;
+  cursor: pointer;
+  margin: 7px;
+  padding: 10px;
+}
     </style>
 </head>
 <body>
+  {% load static %}
   <nav style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2)">                    
     <div class="navbar">
       <a class="logo" href="/">Growthing</a>
@@ -102,42 +229,91 @@
         <input type="text" placeholder="Search...">
         <button type="submit">Search</button>
       </div>
-      <button class="user-button">Sign In</button>
+      <div class="user">
+      {% if user.is_authenticated %}
+          <a href="/signout"><button class= "user-button" type="submit">SignOut</button></a>
+          {% else %}
+          <a href="/signup"><button class= "user-button" type="submit">SignUp</button></a>
+          <a href="/signin"><button class= "user-button" type="submit">SignIn</button></a>
+          {% endif %}
+      </div>
     </div>
   </nav>
-    <a>{{My_projects}}</a>
 
-    {% for project in projects %}    
-          <div  class="project-card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">{{project.title}}</h5>
-              <p class="card-text">{{project.description}}</p>
-              <p class="card-text">{{project.genre}}</p>
-              <p class="card-text">{{project.project_id}}</p>
-              <a href={% url 'project' pk=project.project_id %} class="btn btn-primary">Open project</a>
+  {% if user.is_authenticated %}
+    
+          <div class="home-card">
+            <div class="greeting">
+              <p>Hello {{fname}}! What will you work on today?</p>
             </div>
+            <div class="search-bar">
+              <input type="text" placeholder="Search...">
+              <button type="submit">Search</button>
+            </div>
+            <div class="redirect-button">
+              <div class="btn">
+                <p style="font-size: 30px;">&#128161;</p>
+                <p style="font-size: 16px;">All</p>
+              </div>
+              <div class="btn">
+                <p style="font-size: 30px;">&#128161;</p>
+                <p style="font-size: 16px;">Promgramming</p>
+              </div>
+              <div class="btn">
+                <p style="font-size: 30px;">&#128161;</p>
+                <p style="font-size: 16px;">Design</p>
+              </div>
+              <div class="btn">
+                <p style="font-size: 30px;">&#128161;</p>
+                <p style="font-size: 16px;">Video Editing</p>
+              </div>
+              <div class="btn">
+                <p style="font-size: 30px;">&#128161;</p>
+                <p style="font-size: 16px;">Marketinig</p>
+              </div>
+              <div class="btn">
+                <p style="font-size: 30px;">&#128161;</p>
+                <p style="font-size: 16px;">Misc</p>
+              </div>
+            </div>
+            </div>
+            <div class="ongoing-projects">
+              <div style="font-size: 20px;">Continue working on...</div>
+              <div class="ongoing-container">
+                {% for roadmap in ongoing_projects %} 
+                <div class="ongoing-card">
+                <p>{{ roadmap.title }}</p>
+                <p>{{roadmap.genre}}</p>
+                <p>{{roadmap.description}}</p>
+                <a href="{% url 'roadmap' username=user.username pk=roadmap.project_id %}">
+                  {% csrf_token %}
+                  <button class="open-project-button">Open project</button>
+                </a>
+              </div>
+                {% endfor %}
+              </div>
+            </div>
+
+  {% else %}
+          <div class="model-content">
+            <p>You need to signin/signup</p>
+            <a href="/signup"><button class= "user-button" type="submit">SignUp</button></a>
+            <a href="/signin"><button class= "user-button" type="submit">SignIn</button></a>
           </div>
-          {% endfor %}
-  
+  {% endif %}
 
-
-
-          
-          <a>{{My_projects}}</a>
-
-          {% for message in messages %}
+          <!-- {% for message in messages %}
           <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
               <strong>Message:</strong> {{ message }}
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
               </button>
           </div>
-          {% endfor %}
-      
-          <h3>Welcome to Growthing</h3>
+          {% endfor %} -->
       
       
-          {% if user.is_authenticated %}
+      
+          <!-- {% if user.is_authenticated %}
           <h3>Hello {{fname}}!</h3>
           <h4>You're successfully logged in.</h4>
           <button type="submit"><a href="/signout">SignOut</a></button>
@@ -146,11 +322,11 @@
           <br/>
           <br/>
           <button type="submit"><a href="/signin">SignIn</a></button>
-          {% endif %}
+          {% endif %} -->
 
 
 
 
-  <script src="script.js"></script>
+  <script> </script>
 </body>
 </html>

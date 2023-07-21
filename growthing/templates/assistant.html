@@ -1,163 +1,223 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title height: 10vh>Get Help</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
   <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-  <script src="script.js"></script>
   <style>
     body {
-      font-family: 'Poppins';font-size: 22px;
+      font-family: 'Poppins';
+      font-size: 22px;
       margin: 0;
       padding: 0;
       height: 100%;
       /* Other global styles */
     }
-  .navbar {
-    background-color: #F6F5FA;
-    overflow: hidden;
-    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
-    height: 7vh;
-  }
-  
-  .navbar a {
-    float: left;
-    color: #18020c;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-  }
-  
-  .navbar a:hover {
-    background-color: #ddd;
-    color: #18020c;
-  }
-  
-  .navbar .logo {
-    display: block;
-    float: left;
-    padding: 14px 16px;
-    font-size: 20px;
-    font-weight: bold;
-    text-decoration: none;
-    color: #0066FF;
-  }
-  
-  .navbar .search-bar {
-    display: flex;
-    float: left;
-    margin-left: 20px;
-    align-items: center;
-  }
 
-  .navbar .search-bar input[type="text"] {
-  margin: 7px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  width: 200px;
-}
-.navbar .search-bar button[type="submit"] {
-  padding: 10px 20px;
-  margin-left: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #007bff;
-  color: #fff;
-  cursor: pointer;
-}
-  
-  .navbar .user-button {
-    float: right;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    background-color: #007bff;
-    cursor: pointer;
-    margin: 7px;
+    .navbar {
+      background-color: #F6F5FA;
+      overflow: hidden;
+      box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
+      height: 7vh;
+    }
 
-  }
-  
-  .navbar::after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  .container{
-   height:80vh;
-   width:70vw;
-  }
- .grid-container {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-gap: 10px;
-  }
-  
-  .grid-item {
-    background-color: #ccc;
-    padding: 10px;
-  }
-  .input-container {
-    position: relative;
-    display: flex;
-    height: 8vh;
-    width: 80vw;
-  }
-  
-  .custom-input {
-    width: 100%;
-    padding: 10px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  .custom-input:focus {
-    outline: none;
-    border-color: #6c63ff;
-    box-shadow: 0 0 5px #6c63ff;
-  }
-  
-  .custom-input::placeholder {
-    color: #999;
-  }
-  
-  .custom-input:hover::placeholder {
-    color: #666;
-  }
-  .send-button {
-    background-color: #008cff;
-    color: white;
-    width: 15vw;
-    border: none;
-    border-radius: 5px;
-    padding: 8px 16px;
-    margin-left: 10px;
-    cursor: pointer;
-  }
-  
-  .send-button:hover {
-    background-color: #45a049;
-  }
-  #chat-log {
-    background-color: #f4f4f4;
-    border: 1px solid #ccc;
-    height: 75vh;
-    overflow-y: scroll;
-    padding: 10px;
-  }
+    .navbar a {
+      float: left;
+      color: #18020c;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
 
-</style>
+    .navbar .logo {
+      display: block;
+      float: left;
+      padding: 14px 16px;
+      font-size: 20px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #0066FF;
+    }
+
+    .navbar .search-bar {
+      display: flex;
+      float: left;
+      margin-left: 20px;
+      align-items: center;
+    }
+
+    .navbar .search-bar input[type="text"] {
+      margin: 7px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 15px;
+      width: 200px;
+    }
+
+    .navbar .search-bar button[type="submit"] {
+      padding: 10px 20px;
+      margin-left: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .navbar .user-button {
+      float: right;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      text-decoration: none;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      background-color: #007bff;
+      cursor: pointer;
+      margin: 7px;
+
+    }
+
+    .navbar::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .navbar .user {
+      float: right;
+    }
+
+    .navbar .user .user-button {
+      float: right;
+      font-size: 16px;
+      text-align: center;
+      text-decoration: none;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      background-color: #007bff;
+      cursor: pointer;
+      margin: 7px;
+      padding: 10px;
+
+    }
+
+    .navbar .user a {
+      text-decoration: none;
+      color: #fff;
+      padding: 0px;
+      margin: 0px;
+    }
+
+    .container {
+      height: 80vh;
+      width: 70vw;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      grid-gap: 10px;
+    }
+
+    .grid-item {
+      background-color: #ccc;
+      padding: 10px;
+    }
+
+    .input-container {
+      position: relative;
+      display: flex;
+      height: 8vh;
+      width: 80vw;
+    }
+
+    .custom-input {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .custom-input:focus {
+      outline: none;
+      border-color: #6c63ff;
+      box-shadow: 0 0 5px #6c63ff;
+    }
+
+    .custom-input::placeholder {
+      color: #999;
+    }
+
+    .custom-input:hover::placeholder {
+      color: #666;
+    }
+
+    .send-button {
+      background-color: #008cff;
+      color: white;
+      width: 15vw;
+      border: none;
+      border-radius: 5px;
+      padding: 8px 16px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    .send-button:hover {
+      background-color: #45a049;
+    }
+
+    #chat-log {
+      background-color: #f4f4f4;
+      border: 1px solid #ccc;
+      height: 75vh;
+      overflow-y: scroll;
+      padding: 10px;
+    }
+    body {
+            font-family: Arial, sans-serif;
+        }
+
+        .chat-container {
+            width: 400px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 20px auto;
+        }
+
+        .chat-message {
+            margin-bottom: 10px;
+        }
+
+        .user-message {
+            color: blue;
+        }
+
+        .assistant-message {
+            color: green;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-top: 5px;
+        }
+  </style>
 </head>
+
 <body>
   <div class="sticky-top">
-    <nav style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2)">                    
+    <nav style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2)">
       <div class="navbar">
         <a class="logo" href="/">Growthing</a>
         <a href="/home">Home</a>
@@ -167,28 +227,103 @@
           <input type="text" placeholder="Search...">
           <button type="submit">Search</button>
         </div>
-        <button class="user-button">Sign In</button>
+        <div class="user">
+          {% if user.is_authenticated %}
+          <a href="/signout"><button class="user-button" type="submit">SignOut</button></a>
+          {% else %}
+          <a href="/signup"><button class="user-button" type="submit">SignUp</button></a>
+          <a href="/signin"><button class="user-button" type="submit">SignIn</button></a>
+          {% endif %}
+        </div>
       </div>
     </nav>
   </div>
+
   <div class="grid-container">
     <div class="grid-item">
       Previous chats
+
+    </form>
     </div>
+
     <div class="grid-item">
       <div id="chat-log" class="chat-log">
-        {{previos_chatings1}}
-        
+        <!-- {% for chat in chat_history %}
+                {% if chat.role == 'user' %}
+                    <p>User: {{ chat.content }}</p>
+                {% else %}
+                    <p class="assistant">Assistant: {{ chat.content }}</p>
+                {% endif %}
+            {% endfor %} -->
+            <div class="chat-container">
+              <div class="chat-history" id="chat-history">
+                  <!-- Chat history will be dynamically populated here -->
+              </div>
+              <div class="user-input">
+                  <input type="text" id="user-message" placeholder="Type your message...">
+                  <button onclick="sendMessage()">Send</button>
+              </div>
+          </div>
       </div>
+
       <div class="grid-item">
         <div class="input-container">
-          <input type="text" class="custom-input" placeholder="Enter your text">
-          <button class="send-button">Send</button>
-        </div>      
+
+        </div>
       </div>
     </div>
-  
-  </main>
-  <script src="script.js"></script>
+
+    </main>
+    <script>
+      function updateChatHistory(message, role) {
+        const chatHistoryElement = document.getElementById('chat-history');
+    
+        const messageElement = document.createElement('div');
+        messageElement.classList.add(role);
+        messageElement.innerText = message;
+      
+        chatHistoryElement.appendChild(messageElement);
+        chatHistoryElement.scrollTop = chatHistoryElement.scrollHeight;
+    }
+    
+    function sendMessage() {
+        const messageInput = document.getElementById('user-message');
+        const message = messageInput.value.trim();
+    
+        if (message !== '') {
+            updateChatHistory(message, 'user');
+    
+            // Make a POST request to the Django backend
+            fetch('/assistant/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    'message': message
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const assistantReply = data['assistant_reply'];
+                updateChatHistory(assistantReply, 'assistant');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    
+            messageInput.value = '';
+        }
+    }
+    
+    // To handle the "Enter" key press to send the message
+    document.getElementById('user-message').addEventListener('keypress', function (event) {
+        if (event.key === 'Enter') {
+            sendMessage();
+        }
+    });
+    
+    </script>
 </body>
+
 </html>

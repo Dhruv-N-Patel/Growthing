@@ -19,19 +19,10 @@ from appname.views import generate_roadmap
 from django.contrib import admin
 from django.urls import path, include
 from appname import views
+from django.urls import include, path
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('explore/', project_list, name='project_list'),
-    path("assistant/",views.assistant,name='assistant'),
-    path('home/', views.ongoing, name='home'),
-    path('', views.index, name='index' ),
-    path("project/<str:pk>/", views.project_content, name="project"),
-    path("roadmap/<str:pk>/", views.generate_roadmap, name="roadmap"),
-    path("project/<str:pk>/", views.show_roadmap, name="project"),
-    path("signup/", views.signup, name="signup"),
-    # path('activate/<uidb64>/<token>', views.activate, name='activate'),
-    path("signin/", views.signin, name="signin"),
-    path("signout/", views.signout, name="signout"),
-    path('', include('appname.urls'))
+    path('accounts/', include('django.contrib.auth.urls')),  # Default authentication views for normal users
+    path('', include('appname.urls')),  # Replace 'your_app' with the name of your app containing other views
 ]

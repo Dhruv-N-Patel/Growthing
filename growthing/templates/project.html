@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>{% block title %}{% endblock title %}</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
   <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-    <style>
-      body {
-        font-family: 'Poppins';font-size: 22px;
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        /* Other global styles */
-      }
+  <style>
+    body {
+      font-family: 'Poppins';
+      font-size: 22px;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      /* Other global styles */
+    }
+
     .navbar {
       background-color: #F6F5FA;
       overflow: hidden;
-      box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
+      box-shadow: 0px 4px 16px 0px rgba(24, 2, 12, 0.10);
       height: 7vh;
     }
-    
+
     .navbar a {
       float: left;
       color: #18020c;
@@ -27,12 +30,20 @@
       text-decoration: none;
       font-size: 17px;
     }
-    
+
+      {
+      % comment %
+    }
+
     .navbar a:hover {
       background-color: #ddd;
       color: #18020c;
     }
-    
+
+      {
+      % endcomment %
+    }
+
     .navbar .logo {
       display: block;
       float: left;
@@ -42,31 +53,32 @@
       text-decoration: none;
       color: #0066FF;
     }
-    
+
     .navbar .search-bar {
       display: flex;
       float: left;
       margin-left: 20px;
       align-items: center;
     }
-  
+
     .navbar .search-bar input[type="text"] {
-    margin: 7px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 15px;
-    width: 200px;
-  }
-  .navbar .search-bar button[type="submit"] {
-    padding: 10px 20px;
-    margin-left: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-  }
-    
+      margin: 7px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 15px;
+      width: 200px;
+    }
+
+    .navbar .search-bar button[type="submit"] {
+      padding: 10px 20px;
+      margin-left: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+    }
+
     .navbar .user-button {
       float: right;
       padding: 10px 20px;
@@ -80,45 +92,84 @@
       background-color: #007bff;
       cursor: pointer;
       margin: 7px;
-  
+
     }
-    
+
     .navbar::after {
       content: "";
       display: table;
       clear: both;
     }
-    .project_page{
-      padding: 50px;
+
+
+
+    .navbar .user {
+      float: right;
     }
 
-    .input-container {
-      position: relative;
-      display: flex;
-      height: 30px;
-      width: 700px;
-    }
-    .custom-input {
-      width: 100%;
+    .navbar .user .user-button {
+      float: right;
+      font-size: 16px;
+      text-align: center;
+      text-decoration: none;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      background-color: #007bff;
+      cursor: pointer;
+      margin: 7px;
       padding: 10px;
-      border: 2px solid #ccc;
+    }
+
+    .navbar .user a {
+      text-decoration: none;
+      color: #fff;
+      padding: 0px;
+      margin: 0px;
+    }
+
+    .project_info {
+      margin-left: 50px;
+    }
+
+    .project_info .user-button {
+      font-size: 16px;
+      text-align: center;
+      text-decoration: none;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      background-color: #007bff;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .project_info p {
+      color: #232323;
+      padding-left: 30px;
+      padding-top: 10px;
+      padding-bottom: 10px;
       border-radius: 5px;
       font-size: 16px;
+      background-color: #f3f3f3;
     }
-    
-    .custom-input:focus {
-      outline: none;
-      border-color: #6c63ff;
-      box-shadow: 0 0 5px #6c63ff;
+
+    .btn {
+      margin-left: 100px;
     }
-    
-    .custom-input::placeholder {
-      color: #999;
+
+    .btn button {
+      font-size: 16px;
+      text-align: center;
+      text-decoration: none;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      background-color: #007bff;
+      cursor: pointer;
+      padding: 10px;
     }
-    
-    .custom-input:hover::placeholder {
-      color: #666;
-    }
+
     .send-button {
       background-color: #008cff;
       color: white;
@@ -128,15 +179,86 @@
       margin-left: 10px;
       cursor: pointer;
     }
-    
+
     .send-button:hover {
       background-color: #45a049;
     }
+
+    .grid-item {
+      background-color: #CDE6F5;
+      padding: 20px;
+      border-radius: 10px;
+      margin-left: 50px;
+      margin-right: 50px;
+
+    }
+
+    .input-container {
+      margin-bottom: 10px;
+    }
+
+    .suggestions {
+      display: flex;
+    }
+
+    .suggestion {
+      cursor: pointer;
+      padding: 5px 10px;
+      background-color: #f0f0f0;
+      border-radius: 3px;
+      margin: 10px;
+      font-size: 16px;
+    }
+
+    .suggestion:hover {
+      background-color: #e0e0e0;
+    }
+
+    .input-container input[type="text"] {
+      margin: 7px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 500px;
+      font-size: 16px;
+    }
+
+    .tag-input-container {
+      margin-bottom: 10px;
+    }
+
+    .tag-input-container input {
+      margin: 7px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 500px;
+      font-size: 16px;
+    }
+
+    .tag-suggestions {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .tag-suggestion {
+      cursor: pointer;
+      padding: 5px 10px;
+      background-color: #f0f0f0;
+      border-radius: 3px;
+      margin: 10px;
+      font-size: 16px;
+    }
+
+    .tag-suggestion:hover {
+      background-color: #e0e0e0;
+    }
   </style>
 </head>
+
 <body>
   <div class="sticky-top">
-    <nav style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2)">                    
+    <nav style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2)">
       <div class="navbar">
         <a class="logo" href="/">Growthing</a>
         <a href="/home">Home</a>
@@ -146,33 +268,143 @@
           <input type="text" placeholder="Search...">
           <button type="submit">Search</button>
         </div>
-        <button class="user-button">Sign In</button>
+        <div class="user">
+          {% if user.is_authenticated %}
+          <a href="/signout"><button class="user-button" type="submit">SignOut</button></a>
+          {% else %}
+          <a href="/signup"><button class="user-button" type="submit">SignUp</button></a>
+          <a href="/signin"><button class="user-button" type="submit">SignIn</button></a>
+          {% endif %}
+        </div>
       </div>
     </nav>
 
-  <main>
-    {% comment %} {% for project in project_pro001 %}  {% endcomment %}
-    <div class="project_page">
-
-    {{project.project_id}}
-    <h1>{{project.title}}</h1>
-    {{project.genre}}
-    <p>{{project.description}}</p>
-    <div>
-      <p>skills reuired:</p>  
-      <p>{{project.skills}}</p>
-      <a href="{% url 'roadmap' pk=project.project_id %}" class="btn btn-primary">Go to Roadmap</a>
-    </div>
-    
-    <!-- <div class="grid-item">
-      <div class="input-container">
-        <input type="text" class="custom-input" placeholder="Which skills you already know?">
-        <button class="send-button">Send</button>
+    <main>
+      <div class="project_info">
+        <h2>{{project.title}}</h2>
+        <p>ID: {{project.project_id}} </p>
+        <p>Genre: {{project.genre}}</p>
+        <p>Description: {{project.description}}</p>
+        <p>Skills reuired: {{project.skills}}</p>
       </div>
-  </div> -->
-  
-  
 
-  <script src="script.js"></script>
+      <div class="user-input">
+        <div class="grid-item">
+          <form method="POST" action="{% url 'generate_roadmap' pk=project.project_id username=user.username %}">
+            {% csrf_token %}
+
+            <P>What is your prior experience and expertise in the project's domain? Please provide some details.</P>
+            <div class="input-container">
+              <input type="text" class="input-text" name="experience" placeholder="your prior experience and expertise">
+              <div class="suggestions">
+                <span class="suggestion">I have little to no experience in this domain.</span>
+                <span class="suggestion">I have some basic knowledge or experience.</span>
+                <span class="suggestion">I have extensive experience or expertise in this domain.</span>
+              </div>
+            </div>
+
+            <P>What are your specific goals, expectations, and preferred difficulty level for this project?</P>
+            <div class="input-container">
+              <input type="text" class="input-text" name="expectation" placeholder="specific goals, expectations, and preferred difficulty level">
+              <div class="suggestions">
+                <span class="suggestion">I want to acquire a foundational understanding of the domain.</span>
+                <span class="suggestion">I want to gain hands-on experience and develop practical abilities.</span>
+                <span class="suggestion">I want to deepen my understanding and expertise in the domain.</span>
+                <span class="suggestion">I want a project that pushes me beyond my current skill level.</span>
+              </div>
+            </div>
+            <P>Which specific skills or tools do you want to learn or practice?</P>
+            <div class="tag-input-container">
+              <input type="text" class="tag-input" name="specific-skills" placeholder="Type here">
+              <div class="tag-suggestions">
+                <span class="tag-suggestion">Tag 1</span>
+                <span class="tag-suggestion">Tag 2</span>
+                <span class="tag-suggestion">Tag 3</span>
+                <span class="tag-suggestion">Tag 4</span>
+                <!-- Add more tag suggestions here -->
+              </div>
+            </div>
+            <p>How much time are you willing to dedicate to this project on a weekly basis?</p>
+
+            <select id="number-select">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <!-- Add more number options here -->
+            </select>
+
+
+            <div class="btn">
+              {% if user.is_authenticated %}
+              {% comment %} {% for project in project_pro001 %} {% endcomment %}
+              <button class="btn" type="submit">Create Roadmap</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      {% else %}
+      {% comment %} {% for project in project_pro001 %} {% endcomment %}
+      <p>You need to Signup/Signin to get roadmap</p>
+      <a href="/signup"><button class="user-button" type="submit">SignUp</button></a>
+      <a href="/signin"><button class="user-button" type="submit">SignIn</button></a>
+      {% endif %}
+
+
+
+      <script>
+
+        const inputContainers = Array.from(document.getElementsByClassName('input-container'));
+
+        inputContainers.forEach((container) => {
+          const input = container.querySelector('.input-text');
+          const suggestions = Array.from(container.getElementsByClassName('suggestion'));
+
+          // Add click event listeners to each suggestion within the container
+          suggestions.forEach((suggestion) => {
+            suggestion.addEventListener('click', () => {
+              input.value = suggestion.textContent;
+              input.focus();
+            });
+          });
+        });
+
+        function setupTagInput() {
+          // Get the tag input container and its respective input and suggestion elements
+          const tagInputContainer = document.querySelector('.tag-input-container');
+          const tagInput = tagInputContainer.querySelector('.tag-input');
+          const tagSuggestions = Array.from(tagInputContainer.getElementsByClassName('tag-suggestion'));
+
+          // Add click event listeners to each tag suggestion
+          tagSuggestions.forEach((suggestion) => {
+            suggestion.addEventListener('click', () => {
+              const currentTags = tagInput.value.split(',').map(tag => tag.trim());
+              const clickedTag = suggestion.textContent;
+
+              // Only add the tag if it's not already present
+              if (!currentTags.includes(clickedTag)) {
+                currentTags.push(clickedTag);
+                tagInput.value = currentTags.join(', ');
+              }
+
+              tagInput.focus();
+            });
+          });
+        }
+
+        // Call the function to set up the tag input functionality
+        setupTagInput();
+
+        const numberSelect = document.getElementById('number-select');
+
+        numberSelect.addEventListener('change', () => {
+          const selectedNumber = numberSelect.value;
+          console.log(`Selected number: ${selectedNumber}`);
+        });
+
+
+
+
+      </script>
 </body>
+
 </html>

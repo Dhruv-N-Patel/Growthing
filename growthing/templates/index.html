@@ -12,6 +12,7 @@
       margin: 0;
       padding: 0;
       height: 100%;
+      background: #F6F5FA;
       /* Other global styles */
     }
   .bg_design{
@@ -35,7 +36,7 @@
   .navbar {
     background-color: #F6F5FA;
     overflow: hidden;
-    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 16px 0px rgba(24, 2, 12, 0.10);
     height: 7vh;
   }
   
@@ -48,10 +49,10 @@
     font-size: 17px;
   }
   
-  .navbar a:hover {
+  /* .navbar a:hover {
     background-color: #ddd;
     color: #18020c;
-  }
+  } */
   
   .navbar .logo {
     display: block;
@@ -91,7 +92,6 @@
     float: right;
     padding: 10px 20px;
     font-size: 16px;
-    font-weight: bold;
     text-align: center;
     text-decoration: none;
     border: none;
@@ -108,6 +108,51 @@
     display: table;
     clear: both;
   }
+
+  .navbar .user{
+    float: right;
+   }
+   
+         .navbar .user .user-button {
+           float: right;
+           font-size: 16px;
+           text-align: center;
+           text-decoration: none;
+           border: none;
+           border-radius: 5px;
+           color: #fff;
+           background-color: #007bff;
+           cursor: pointer;
+           margin: 7px;
+           padding: 10px;
+       
+         }
+   
+         .navbar .user a{
+           text-decoration: none;
+           color: #fff;
+           padding: 0px;
+           margin: 0px;
+         }
+.explore-button{
+  padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #007bff;
+    cursor: pointer;
+    margin: 7px;
+    width: 150px;
+}
+.explore-button a{
+  text-decoration: none;
+  color: #fff;
+  padding: 0px;
+ margin: 0px;
+}
   </style>
 </head>
 <body>
@@ -115,20 +160,24 @@
     <nav style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2)">                    
       <div class="navbar">
         <a class="logo" href="/">Growthing</a>
-        <a href="/home">Home</a>
         <a href="/explore">Explore</a>
-        <a href="/assistant">Assistant</a>
         <div class="search-bar">
           <input type="text" placeholder="Search...">
           <button type="submit">Search</button>
         </div>
-        <button class="user-button">Sign In</button>
+        <div class="user">
+          {% if user.is_authenticated %}
+              <a href="/signout"><button class= "user-button" type="submit">SignOut</button></a>
+              {% else %}
+              <a href="/signup"><button class= "user-button" type="submit">SignUp</button></a>
+              <a href="/signin"><button class= "user-button" type="submit">SignIn</button></a>
+              {% endif %}
+          </div>
       </div>
     </nav>
       
   </header>
   <main>
-    <div class="bg_design">
       <div class= "main_content">
       <h1 class="heading">Growthing</h1>
       <p class="explain_text">
@@ -136,7 +185,7 @@
         And we are here to assist you to do the same. 
         Choose a project, help us understand you expierence, and we will guide you to reach exellence.
       </p>
-      <a href="/explore" class="btn btn-primary">Explore Projects</a>
+      <div class="explore-button"><a href="/explore" >Explore Projects</a></div>
       <!-- <a href="/" class="btn btn-primary">Sign up/get started</a>
     </div> -->
     <!-- <div class="row">
