@@ -179,17 +179,23 @@ body {
 }
 .ongoing-projects{
   margin: 00px auto;
+  padding: 10px;
   width: 70vw;
   margin-top: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  
 }
 .ongoing-card{
-  padding: 10px;
+  padding: 20px;
   margin: 0px 10px;
+  padding-top:30px;
   background-color: #cde6f5;
   width: 200px;
   height: 200px;
   border-radius: 15px;
   font-size: 16px;
+  box-shadow: 0px 4px 16px 0px rgba(24, 2, 12, 0.10);
 }
 .ongoing-container{
   display: flex;
@@ -200,6 +206,7 @@ body {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin-top: -10px;
 }
 
 .open-project-button{
@@ -277,15 +284,33 @@ body {
               </div>
             </div>
             </div>
+
             <div class="ongoing-projects">
               <div style="font-size: 20px;">Continue working on...</div>
               <div class="ongoing-container">
                 {% for roadmap in ongoing_projects %} 
                 <div class="ongoing-card">
-                <p>{{ roadmap.title }}</p>
+                <p>{{roadmap.title }}</p>
                 <p>{{roadmap.genre}}</p>
-                <p>{{roadmap.description}}</p>
-                <a href="{% url 'roadmap' username=user.username pk=roadmap.project_id %}">
+                <p>{{roadmap.project_id}}</p>
+                <a href="/{{ user.username }}/roadmap/{{ roadmap.project_id }}/">
+                  {% csrf_token %}
+                  <button class="open-project-button">Open project</button>
+                </a>
+              </div>
+                {% endfor %}
+              </div>
+            </div>
+
+            <div class="ongoing-projects">
+              <div style="font-size: 20px;">Continue working on...</div>
+              <div class="ongoing-container">
+                {% for roadmap in ongoing_projects %} 
+                <div class="ongoing-card">
+                <p>{{roadmap.title }}</p>
+                <p>{{roadmap.genre}}</p>
+                <p>{{roadmap.project_id}}</p>
+                <a href="/{{ user.username }}/roadmap/{{ roadmap.project_id }}/">
                   {% csrf_token %}
                   <button class="open-project-button">Open project</button>
                 </a>
