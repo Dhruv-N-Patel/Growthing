@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -145,13 +146,27 @@
     background-color: #007bff;
     cursor: pointer;
     margin: 7px;
-    width: 150px;
+    width: 200px;
 }
 .explore-button a{
   text-decoration: none;
   color: #fff;
   padding: 0px;
  margin: 0px;
+}
+.steps{
+  margin: 50px;
+}
+.step{
+  margin: 10px;
+  background-color: aquamarine;
+  padding: 20px;
+  border-radius: 15px;
+  width: 70vw;
+}
+.guide{
+  width: 98.3vw;
+  height: auto;
 }
   </style>
 </head>
@@ -163,7 +178,10 @@
         <a href="/explore">Explore</a>
         <div class="search-bar">
           <input type="text" placeholder="Search...">
-          <button type="submit">Search</button>
+          <button type="submit">
+            
+            Search
+          </button>
         </div>
         <div class="user">
           {% if user.is_authenticated %}
@@ -185,33 +203,41 @@
         And we are here to assist you to do the same. 
         Choose a project, help us understand you expierence, and we will guide you to reach exellence.
       </p>
-      <div class="explore-button"><a href="/explore" >Explore Projects</a></div>
-      <!-- <a href="/" class="btn btn-primary">Sign up/get started</a>
-    </div> -->
-    <!-- <div class="row">
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Explore Project</h5>
-              <p class="card-text">Select a project from wide varity of project avaible.</p>
-              <a href="/explore" class="btn btn-primary">Explore Projects</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Ongoing Projects</h5>
-              <p class="card-text">Open your ongoing projects</p>
-              <a href="/ongoing" class="btn btn-primary">Ongoing Projects</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    <div class="d-grid gap-2 col-3 mx-auto mt-3">
-        <a href="gethelp.html" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">Get help from AI</a>
-       </div> -->
+      <div class="explore-button"><a href="/explore" >
+        <img src="{% static 'magnifying-glass.png' %}" alt="My Logo"> Explore Projects
+      </a>
+    </div>
   </div>
+  {% comment %} <div class="steps">
+    <div class="step">
+      Step 1: Explore and Select Your Project
+      Browse through a diverse range of projects across various genres.
+      Choose a project that sparks your interest and aligns with your goals.
+    </div>
+    <div class="step">
+      Step 2: Share Your Experience and Skills
+      Let us know your current experience and skills in the chosen project area.
+      This helps us create a customized roadmap tailored to your needs.
+    </div>
+    <div class="step">
+      Step 3: Embark on Your Personalized Roadmap
+      Follow the roadmap designed just for you, guiding you through the project.
+      </div>
+    <div class="step">
+      Step 4: Track Your Progress
+      Keep track of your accomplishments and milestones as you progress.
+      Celebrate your achievements and stay motivated on your learning journey.
+    </div>
+    <div class="step">
+      Step 5: Get AI-Powered Assistance
+      If you encounter any challenges or need guidance, we are here to help you.
+      Get instant support, tips, and resources  to keep you moving forward.
+    </div>
+  </div> {% endcomment %}
+  <div>
+    <img class= "guide" src="{% static 'guide.png' %}" alt="Guide">
+  </div>
+  
   </main>
 </body>
 </html>

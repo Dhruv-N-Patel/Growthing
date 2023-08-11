@@ -1,30 +1,17 @@
 from .models import Project, Roadmap
-from django.shortcuts import render,redirect, HttpResponse
-from django.http import JsonResponse
-import os
+from django.shortcuts import render,redirect
 import openai
-from dotenv import load_dotenv, find_dotenv
 from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth import login,logout, authenticate
 from django.contrib.auth.models import User
 from growthing import settings
-from django.core.mail import send_mail, EmailMessage
-from django.contrib.sites.shortcuts import get_current_site
-from django.template.loader import render_to_string
-from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
-from django.utils.encoding import force_bytes, force_str
 from django.contrib.auth import authenticate, login, logout
-from . tokens import generate_token
 from django.contrib.auth.models import User
-from django.db import models
 from django.contrib.auth.decorators import login_required
-from django.views import View
 from django.shortcuts import redirect
-import json
 from django.urls import reverse
-from json import dumps
-from django.core.serializers import serialize
+
 
 
 # Create your views here.
@@ -133,7 +120,7 @@ def generate_roadmap(request,username, pk):
                 ",
         #prompt=f"just say hey!", 
         max_tokens=3000,
-        temperature=1,  
+        temperature=0.1,  
         n=1,  
         stop=None,
     )
@@ -256,87 +243,6 @@ def signout(request):
     logout(request)
     messages.success(request, "Logged Out Successfully!!")
     return redirect("/")
-
-
-
-# openai.api_key = settings.OPENAI_SETTINGS['api_key']
-
-# class ResumeAssistantView(View):
-#     template_name = 'resume_assistant.html'
-
-#     def get(self, request):
-#         context = {'chat_history': request.session.get('chat_history', [])}
-#         return render(request, self.template_name, context)
-
-#     def post(self, request):
-#         chat_history = request.session.get('chat_history', [])
-#         message = request.POST['message']
-
-#         chat_history.append({'role': 'user', 'content': message})
-
-#         if len(chat_history) > 4:
-#             chat_history.pop(0)  # Remove oldest message if chat history exceeds 5 messages
-
-#         response = openai.Completion.create(
-#             engine='text-davinci-003',
-#             prompt=self._build_prompt(chat_history),
-#             temperature=0.7,
-#             max_tokens=150,
-#             n=1,
-#             stop=None,
-#         )
-
-#         chat_history.append({'role': 'assistant', 'content': response.choices[0].text.strip()})
-
-#         request.session['chat_history'] = chat_history
-
-#         context = {'chat_history': chat_history}
-#         return render(request, self.template_name, context)
-
-#     def _build_prompt(self, chat_history):
-#         # Building the prompt using chat history
-#         prompt = "You are a resume assistant. You will help the student create a professional resume.\n"
-#         for chat in chat_history:
-#             role = chat['role']
-#             content = chat['content']
-#             prompt += f'{role}: {content}\n'
-
-#         # Add customized prompts based on user responses
-#         user_messages = [chat['content'] for chat in chat_history if chat['role'] == 'user']
-
-#         # Field targeting prompt
-#         if 'field' not in user_messages:
-#             prompt += "Assistant: What field are you targeting in your resume? (e.g., consulting, product management, AI/ML, development, finance)\n"
-
-#         # Resume preparation level prompt
-#         elif 'resume preparation' not in user_messages:
-#             prompt += "Assistant: What is the present level of your resume preparation?\n" \
-#                       "1. Resume draft already made and needs improvement.\n" \
-#                       "2. Pointers made but not started with making it into a resume and sections.\n" \
-#                       "3. Need to start making it from scratch.\n"
-
-#         # Sample resume prompt
-#         elif 'sample resume' not in user_messages:
-#             prompt += "Assistant: Do you have any sample resumes that you would like to take inspiration from?\n"
-
-#         # Good things and improvements prompt
-#         elif any(msg.startswith('sample resume:') for msg in user_messages):
-#             prompt += "Assistant: What are the good things about that sample resume? " \
-#                       "And what are the specific improvements you would like to make?\n"
-
-#         # Section/pointer improvement prompt
-#         else:
-#             prompt += "Assistant: Which section or pointer would you like to improve? Or are you satisfied with the overall resume?\n"
-
-#         prompt += "Assistant:"
-
-#         return prompt
-    
-# class ClearChatView(View):
-#     def get(self, request):
-#         request.session['chat_history'] = []  # Clear the chat history
-#         return redirect('resume_assistant')  # Redirect back to the main resume assistant view
-    
 
 
 def assistant(request):
